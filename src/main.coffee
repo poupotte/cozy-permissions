@@ -1,5 +1,7 @@
 fs = require 'fs'
 
-exports.getPassword = (app) ->
-	return fs.readFileSync "/etc/cozy/tokens/#{app}.token"
+exports.getLogin = () ->
+    name = process.env.name
+    password = fs.readFileSync "/etc/cozy/tokens/#{name}.token"
+    return [name, password]
 
